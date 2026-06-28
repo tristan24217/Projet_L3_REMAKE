@@ -8,7 +8,6 @@ const scores = document.getElementById("scores");
 const resetBtn = document.getElementById("resetBtn");
 const classList = document.getElementById("classList");
 
-// Charge la liste des classes reconnues (colonne de gauche)
 async function loadClasses() {
   try {
     const res = await fetch("/classifier/classes");
@@ -23,7 +22,6 @@ async function loadClasses() {
       classList.appendChild(li);
     });
   } catch (_) {
-    /* silencieux : la liste reste vide si l'API ne répond pas */
   }
 }
 loadClasses();
@@ -68,7 +66,6 @@ function renderScores(predictions) {
     row.appendChild(track);
     scores.appendChild(row);
 
-    // Animation de remplissage (référence directe, plus robuste)
     requestAnimationFrame(() => {
       fill.style.transition = "width 0.6s ease";
       fill.style.width = pct + "%";
